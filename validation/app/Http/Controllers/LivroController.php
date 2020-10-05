@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Livro;
 use Illuminate\Http\Request;
+use App\Livro;
 
 class LivroController extends Controller
 {
     public function index()
     {
-        $livros = Livro::all();
+        $livro = Livro::all();
         return view('livros.index', compact('livros'));
     }
 
@@ -22,9 +22,9 @@ class LivroController extends Controller
     {
        
         $validacao = $request->validate([
-            'titulo' => ['required',]
-            'autor' => ['required',]
-            'edicao' => ['required',]
+            'titulo' => 'required',
+            'autor' => 'required',
+            'edicao' => 'required',
             'isbn' => 'nullable|numeric',
         ]);
 
